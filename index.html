@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Koleksi Buku</title>
+</head>
+<body>
+    <h1>Daftar Buku</h1>
+    <ul id="book-list"></ul>
+
+    <script>
+        fetch('http://127.0.0.1:5001/books') 
+            .then(response => response.json())
+            .then(data => {
+                const bookList = document.getElementById('book-list');
+                data.forEach(book => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `${book.title} oleh ${book.author}`;
+                    bookList.appendChild(listItem);
+                });
+            });
+    </script>
+</body>
+</html>
